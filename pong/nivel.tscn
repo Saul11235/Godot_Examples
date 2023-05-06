@@ -1,16 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://personaje.tscn" type="PackedScene" id=1]
 [ext_resource path="res://JugadorHumano.tscn" type="PackedScene" id=2]
 [ext_resource path="res://pelota.tscn" type="PackedScene" id=3]
 [ext_resource path="res://personaje.gd" type="Script" id=4]
 [ext_resource path="res://nivel.gd" type="Script" id=5]
+[ext_resource path="res://fuente_pong/pong_nucleoide.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 960, 50 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 50, 540 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+font_data = ExtResource( 6 )
 
 [node name="nivel" type="Node2D"]
 script = ExtResource( 5 )
@@ -58,13 +63,23 @@ script = ExtResource( 4 )
 [node name="Humano" parent="." instance=ExtResource( 2 )]
 position = Vector2( 100, 540 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = 257.0
-margin_top = 756.0
-margin_right = 657.0
-margin_bottom = 956.0
-text = "00"
-align = 3
+[node name="MarcadorHumano" type="Label" parent="."]
+margin_left = 355.0
+margin_top = 70.0
+margin_right = 605.0
+margin_bottom = 190.0
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 2
+valign = 3
+
+[node name="MarcadorRobot" type="Label" parent="."]
+margin_left = 1315.0
+margin_top = 70.0
+margin_right = 1565.0
+margin_bottom = 190.0
+custom_fonts/font = SubResource( 3 )
+text = "0"
 valign = 3
 
 [connection signal="body_entered" from="arcoJug" to="." method="_on_arcoJug_body_entered"]

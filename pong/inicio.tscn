@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://pelota.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fuente_pong/pong_nucleoide.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://inicio.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 960, 50 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 960, 50 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 50, 540 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 200
+font_data = ExtResource( 2 )
+
+[node name="Pantalla Inicio" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="pelota" parent="." instance=ExtResource( 1 )]
+position = Vector2( 960, 540 )
+
+[node name="ParedSuperior" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedSuperior"]
+position = Vector2( 955, -50 )
+shape = SubResource( 1 )
+
+[node name="Paredinferior" type="StaticBody2D" parent="."]
+position = Vector2( 5, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredinferior"]
+position = Vector2( 955, 1130 )
+shape = SubResource( 2 )
+
+[node name="ParedDerecha" type="StaticBody2D" parent="."]
+position = Vector2( 5, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedDerecha"]
+position = Vector2( 1970, 540 )
+shape = SubResource( 3 )
+
+[node name="ParedIzquierda" type="StaticBody2D" parent="."]
+position = Vector2( 5, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedIzquierda"]
+position = Vector2( -50, 540 )
+shape = SubResource( 3 )
+
+[node name="MarcadorHumano" type="Label" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+custom_fonts/font = SubResource( 4 )
+text = "PONG"
+align = 1
+valign = 1
