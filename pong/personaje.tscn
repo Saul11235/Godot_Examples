@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+height = 140.0
+
+[node name="personaje" type="KinematicBody2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -10.0
+margin_top = -80.0
+margin_right = 10.0
+margin_bottom = 80.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

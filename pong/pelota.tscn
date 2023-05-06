@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://pelota.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 19.999, 19.999 )
+
+[node name="pelota" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.00174533
+shape = SubResource( 1 )

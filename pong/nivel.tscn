@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://personaje.tscn" type="PackedScene" id=1]
+[ext_resource path="res://JugadorHumano.tscn" type="PackedScene" id=2]
+[ext_resource path="res://pelota.tscn" type="PackedScene" id=3]
+[ext_resource path="res://personaje.gd" type="Script" id=4]
+[ext_resource path="res://nivel.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 960, 50 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 50, 540 )
+
+[node name="nivel" type="Node2D"]
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_vertical_guides_": [ -1738.0 ]
+}
+
+[node name="divisoria" type="ColorRect" parent="."]
+margin_left = 955.0
+margin_right = 965.0
+margin_bottom = 1080.0
+
+[node name="ParedSuperior" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedSuperior"]
+position = Vector2( 955, -50 )
+shape = SubResource( 1 )
+
+[node name="Paredinferior" type="StaticBody2D" parent="."]
+position = Vector2( 5, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredinferior"]
+position = Vector2( 955, 1130 )
+shape = SubResource( 1 )
+
+[node name="pelota" parent="." instance=ExtResource( 3 )]
+position = Vector2( 960, 540 )
+
+[node name="arcoJug" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arcoJug"]
+position = Vector2( -50, 540 )
+shape = SubResource( 2 )
+
+[node name="arcoIA" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arcoIA"]
+position = Vector2( 1970, 540 )
+shape = SubResource( 2 )
+
+[node name="robot" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1820, 540 )
+script = ExtResource( 4 )
+
+[node name="Humano" parent="." instance=ExtResource( 2 )]
+position = Vector2( 100, 540 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 257.0
+margin_top = 756.0
+margin_right = 657.0
+margin_bottom = 956.0
+text = "00"
+align = 3
+valign = 3
+
+[connection signal="body_entered" from="arcoJug" to="." method="_on_arcoJug_body_entered"]
+[connection signal="body_entered" from="arcoIA" to="." method="_on_arcoIA_body_entered"]
