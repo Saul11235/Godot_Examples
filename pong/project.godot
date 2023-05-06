@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="NucleoidePong"
+config/name="pong"
 config/description="Hacemos un clon de pong"
 run/main_scene="res://inicio.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
